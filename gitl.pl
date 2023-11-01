@@ -80,8 +80,8 @@ save_diff(To_m_1,To,HTML3) :-
  findall(T2b,(member([T2,_],Tests2),string_concat(To,T2b,T2)),T21),
 
  intersection(T11,T21,IT12),
- subtract(T11,T21,I),
- subtract(T21,T11,D),
+ subtract(T11,T21,D),
+ subtract(T21,T11,I),
  %trace,
  findall([A,B],(member([A1,B],Tests1),string_concat(To_m_1,A,A1)),Tests11),
  findall([A,B],(member([A1,B],Tests2),string_concat(To,A,A1)),Tests21),
