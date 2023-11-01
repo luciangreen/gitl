@@ -82,19 +82,34 @@ save_diff(To_m_1,To,HTML3) :-
  intersection(T11,T21,IT12),
  subtract(T11,T21,I),
  subtract(T21,T11,D),
-
+ %trace,
+ findall([A,B],(member([A1,B],Tests1),string_concat(To_m_1,A,A1)),Tests11),
+ findall([A,B],(member([A1,B],Tests2),string_concat(To,A,A1)),Tests21),
+ append(Tests11,Tests21,Tests3),
  findall([A1,B],(member(A,IT12),string_concat(To_m_1,A,A1),member([A1,B],Tests1)),IT11),
  findall([A1,B],(member(A,IT12),string_concat(To,A,A1),member([A1,B],Tests2)),IT123),
  %trace,
  length(IT11,IT11L),
  numbers(IT11L,1,[],Ns),
+ 
+
  findall([*,T1a,C],(member(N,Ns),get_item_n(IT11,N,[A1,B1]),string_concat(To_m_1,T1a,A1),get_item_n(IT123,N,[_A2,B2]),
  split_string(B1,"\n\r","\n\r",IT111),
  split_string(B2,"\n\r","\n\r",IT121),
  %trace,
  diff(IT111,IT121,C)),CA),
  %trace,
- foldr(append,[[[i,I]],[[d,D]],CA],C1),
+ 
+ findall([*,A,[[i,B14]]],(member(A,I),%string_concat(To_m_1,A,A1),
+ member([A,B],Tests3),split_string(B,"\n\r","\n\r",B1),
+ findall([B11,"<br>"],member(B11,B1),B12),
+ flatten(B12,B13),foldr(string_concat,B13,B14)),IT11a),
+ findall([*,A,[[d,B14]]],(member(A,D),%string_concat(To,A,A1),
+ member([A,B],Tests3),split_string(B,"\n\r","\n\r",B1),
+ findall([B11,"<br>"],member(B11,B1),B12),
+ flatten(B12,B13),foldr(string_concat,B13,B14)),IT123a),
+ 
+ foldr(append,[IT11a,IT123a,CA],C1),
  
  diff(C1,HTML3)
  
