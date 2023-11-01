@@ -24,11 +24,13 @@ diff1(After3,HTML3) :-
  ((%trace,
  Item=[i,Item2])->
  (%trace,
+ (Item2=[]->fail;true),
  %numbers_to_term([Item3],Corr,[],Item2),
  Colour="green",Change="Insertion: ");
  ((%trace,
  Item=[d,Item2])->
  (%trace,
+ (Item2=[]->fail;true),
  %numbers_to_term([Item3],Corr,[],Item2),
  Colour="red",Change="Deletion: ")
  /*;
@@ -57,21 +59,23 @@ diff1(After3,HTML3) :-
  findall(["<table bgcolor=\"",Colour,"\"><tr><td>",Change,Item2,"</td></tr></table>"],(member(Item%[[n,comment],[Item]]
  ,After3),
 
-
- ((not(Item=[[i,_],[_]]),
- not(Item=[[d,_],[_]]))
+%trace,
+ ((not(Item=[i,_]),
+ not(Item=[d,_]))
  %string(Item)
  ->
  (Item=Item2,%numbers_to_term([Item],Corr,[],Item2),
  Colour="white",Change="");
  ((%trace,
- Item=[[i,_],[Item2]])->
+ Item=[i,Item2])->
  (%trace,
+ (Item2=[]->fail;true),
  %numbers_to_term([Item3],Corr,[],Item2),
  Colour="green",Change="Insertion: ");
  ((%trace,
- Item=[[d,_],[Item2]])->
+ Item=[d,Item2])->
  (%trace,
+ (Item2=[]->fail;true),
  %numbers_to_term([Item3],Corr,[],Item2),
  Colour="red",Change="Deletion: ")
  /*;
