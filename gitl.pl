@@ -64,7 +64,7 @@ foldr(string_concat,[Gitl_data_path,Repository,"",N1,"/."],To),
  %trace,
 
  save_diff(To_m_1,To1,HTML),
-  foldr(string_concat,[Gitl_data_path,Repository," ",N,".html"],HTMLP),
+  foldr(string_concat,[Gitl_data_path,Repository,"",N,".html"],HTMLP),
 
  working_directory1(_,A1),
  save_file_s(HTMLP,HTML).
