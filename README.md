@@ -1,6 +1,6 @@
 # GitL
 
-* Decentralised Git that lets you commit and view diffs of version control system in your local folder.
+* GitL is a decentralised Git that lets you commit and view diffs of version control system in your local folder.
 
 # Getting Started
 
