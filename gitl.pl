@@ -24,11 +24,19 @@ commit(Repository1) :-
  
 (exists_directory_s(Repository_root_path)->true;make_directory(Repository_root_path)),
 
- gitl_data_path(Gitl_data_path),
+ gitl_data_path(Gitl_data_path1),
  
-(exists_directory_s(Gitl_data_path)->true;make_directory(Gitl_data_path)),
+(exists_directory_s(Gitl_data_path1)->true;make_directory(Gitl_data_path1)),
 
- foldr(string_concat,[Gitl_data_path,"n.txt"],N_path),
+  %trace,
+  foldr(string_concat,[Repository_root_path,Repository,"/"],R1),
+ (exists_directory_s(R1)->true;make_directory(R1)),
+
+  foldr(string_concat,[Gitl_data_path1,Repository,"/"],R21),
+ (exists_directory_s(R21)->true;make_directory(R21)),
+%trace,
+
+ foldr(string_concat,[Gitl_data_path1,Repository,"/","n.txt"],N_path),
  (exists_file_s(N_path)->
  open_file_s(N_path,N);
  (N=0,number_string(N,NS),save_file_s(N_path,NS))),
@@ -36,18 +44,19 @@ commit(Repository1) :-
  N1 is N+1,
  (number_string(N1,N1S),save_file_s(N_path,N1S)),
 
-  %trace,
-  foldr(string_concat,[Repository_root_path,Repository,"/"],R1),
- (exists_directory_s(R1)->true;make_directory(R1)),
 
-  foldr(string_concat,[Gitl_data_path,Repository,N1,"/"],R2),
+  foldr(string_concat,[Gitl_data_path1,Repository,"/",N1,"/"],R2),
  (exists_directory_s(R2)->true;make_directory(R2)),
+
+ %Gitl_data_path=R2,
+ 
+
 
  Scp="scp -pr ",
  foldr(string_concat,[Repository_root_path,Repository,"/*"],From),
  
  
-foldr(string_concat,[Gitl_data_path,Repository,"",N1,"/."],To),
+ foldr(string_concat,[Gitl_data_path1,Repository,"/",N1,"/."],To),
  foldr(string_concat,[Scp,From," ",To],Command),
  
  directory_files(R1,F),
@@ -58,13 +67,13 @@ foldr(string_concat,[Gitl_data_path,Repository,"",N1,"/."],To),
 
 
  (N=0->N0=N1;N0=N),
- foldr(string_concat,[Gitl_data_path,Repository,"",N0,"/"],To_m_1),
- foldr(string_concat,[Gitl_data_path,Repository,"",N1,"/"],To1),
+ foldr(string_concat,[Gitl_data_path1,Repository,"/",N0,"/"],To_m_1),
+ foldr(string_concat,[Gitl_data_path1,Repository,"/",N1,"/"],To1),
 
  %trace,
 
  save_diff(To_m_1,To1,HTML),
-  foldr(string_concat,[Gitl_data_path,Repository,"",N,".html"],HTMLP),
+  foldr(string_concat,[Gitl_data_path1,Repository,"/",N,".html"],HTMLP),
 
  working_directory1(_,A1),
  save_file_s(HTMLP,HTML).
