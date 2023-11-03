@@ -1,4 +1,4 @@
-find_files(A1,Mod_time) :-
+find_files(A1,Mod_time_a) :-
 %trace,
 
 working_directory1(A,A),
@@ -52,7 +52,7 @@ writeln1(process_directory_ff_tests_ff_ff_ff([A1],%K31,%_G,
  %),Mod_time2),
  foldr(append,Mod_time2,Mod_time),
  %foldr(append,Mod_time3,Mod_time),
- 
+ sort(Mod_time,Mod_time_a),
  
  working_directory1(_,A)
 
