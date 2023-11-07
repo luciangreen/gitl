@@ -1,6 +1,6 @@
 diff(After3,HTML3) :-
 diff1(After3,HTML2),
-	string_concat("<b>Diff output</b><br><table bgcolor=\"green\"><tr><td>Insertion</td></tr></table><br><table bgcolor=\"red\"><tr><td>Deletion</td></tr></table><br>",HTML2,HTML3).
+	string_concat("<b>Diff output</b><br><b>Key</b><table bgcolor=\"green\"><tr><td>Insertion</td></tr></table><br><table bgcolor=\"red\"><tr><td>Deletion</td></tr></table><br>",HTML2,HTML3).
 
 diff1(After3,HTML3) :-
  %correspondences(Corr),
