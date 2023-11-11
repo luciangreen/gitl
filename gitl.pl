@@ -4,11 +4,12 @@
 % - adds a version number to the folder
 % Diffs last two versions
 
-:-include('../listprologinterpreter/listprolog.pl').
 :-include('diff.pl').
 :-include('find_files.pl').
-
 :-include('../luciancicd/ci_vintage.pl').
+:-include('gitl_ws.pl').
+:-include('gitl_ws1.pl').
+:-include('../listprologinterpreter/listprolog.pl').
 
 repository_root_path("../gitl_test/").
 gitl_data_path("../gitl_data/").
@@ -99,11 +100,17 @@ scp1(Repository_root_path,Repository,Gitl_data_path1,N1,R1,N_path) :-
 
 
  Scp="scp -pr ",
- foldr(string_concat,[Repository_root_path,Repository,"/*"],From),
+ foldr(string_concat,[Repository_root_path,Repository,"/*"],From1),
  
+ atomic_list_concat(B," ",From1),
+ atomic_list_concat(B,"\\ ",From),
  
- foldr(string_concat,[Gitl_data_path1,Repository,"/",N1,"/."],To_a),
- foldr(string_concat,[Scp,From," ",To_a],Command),
+ foldr(string_concat,[Gitl_data_path1,Repository,"/",N1,"/."],To_a1),
+
+ atomic_list_concat(C," ",To_a1),
+ atomic_list_concat(C,"\\ ",To_a),
+
+ foldr(string_concat,[Scp,From," ",To_a],Command), 
  
  directory_files(R1,F),
 	delete_invisibles_etc(F,G),

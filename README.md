@@ -48,6 +48,15 @@ halt
 
 * `commit("b").` - Commits repository `b` to the version control system and creates an HTML file with the differences between versions.
 
+# GitL Web Service
+
+* To see a list of repositories with changes and commit some of the changed ones, load with:
+```
+gitl_server(8000).
+```
+
+* Go to `http://localhost:8000/gitl_landing`.
+
 # Authors
 
 Lucian Green - Initial programmer - <a href="https://www.lucianacademy.com/">Lucian Academy</a>
