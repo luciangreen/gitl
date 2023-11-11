@@ -55,7 +55,7 @@ halt
 gitl_server(8000).
 ```
 
-* Go to `http://localhost:8000/gitl_landing`.
+* Go to `http://localhost:8000/gitl`.
 
 # Authors
 
