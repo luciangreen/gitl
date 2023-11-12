@@ -66,7 +66,7 @@ directory_files("./",F),
 	
 	findall(_,(member([_,_,H1,_],J),writeln(H1)),_),
 	
-	writeln("<input type=\"submit\">"),
+	writeln("<input type=\"submit\" value=\"Commit\">"),
 	
 	findall(_,(member([N,H,_,F1],J),foldr(string_concat,["<h2 id=\"",N,"\">",H,"</h2><a href=\"#Top\">Top</a><br>",F1,"<br><br>"],H2),writeln(H2)),_),
 %Debug=off,
