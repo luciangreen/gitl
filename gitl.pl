@@ -175,7 +175,7 @@ sd1(RTests,R1,To_m_1,Repository_root_path,Repository,Gitl_data_path1,N1,R1,N_pat
   
    
 diff(Before,After,After3) :-
- find_insertions_and_deletions_vintage(Before,After,Insertions,Deletions),
- replace11_vintage(After,Insertions,[],After2),
+ find_insertions_and_deletions_vintage_old(Before,After,Insertions,Deletions),
+ replace11_vintage(After,Insertions,[],[],After2),
  replace12_vintage(Before,After2,Deletions,[],After3)
  ,!.
