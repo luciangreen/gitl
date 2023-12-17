@@ -14,7 +14,7 @@
 repository_root_path("../gitl_test/").
 gitl_data_path("../gitl_data/").
 
-commit(Repository1) :-
+commit(Repository1,Label) :-
 
  (string_concat(Repository,"/",Repository1)->true;
  Repository=Repository1),
@@ -76,7 +76,7 @@ commit(Repository1) :-
 
 
 
-  foldr(string_concat,[Gitl_data_path1,Repository,"/",N1,".html"],HTMLP),
+  foldr(string_concat,[Gitl_data_path1,Repository,"/",N1,"-",Label,".html"],HTMLP),
 
  working_directory1(_,A1),
  (HTML=(-) ->true;

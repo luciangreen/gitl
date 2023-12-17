@@ -55,7 +55,7 @@ directory_files("./",F),
 	findall([N,H,H1,F1],(member(H,G),atom_string(H,HH),ws_html(HH,F1),%open_string_file_s(H,F11),
 	get_num(N),
 %(string_concat("log",_,H)->(term_to_atom(F111,F11),F111=[Success,F12],
-((F1=(-))->Success1="<font color=\"black\"></font>";foldr(string_concat,["<font color=\"green\">CHANGED</font> <input type=\"checkbox\" name=\"",HH,"\" />"],Success1)),foldr(string_concat,["<b>",Success1,"</b> - "],Success2),%);(F11=F12,Success2="")),	time_file(H,T),atomic_list_concat(A,"\n",F12),atomic_list_concat(A,"<br>",F1),
+((F1=(-))->Success1="<font color=\"black\"></font>";foldr(string_concat,["<font color=\"green\">CHANGED</font> <input type=\"checkbox\" name=\"",HH,"xxA\" /> Label: <input type=\"text\" name=\"",HH,"xxB\" />"],Success1)),foldr(string_concat,["<b>",Success1,"</b> - "],Success2),%);(F11=F12,Success2="")),	time_file(H,T),atomic_list_concat(A,"\n",F12),atomic_list_concat(A,"<br>",F1),
 	foldr(string_concat,[Success2,"<a href=\"#",N,"\">",
 	H,"</a>",
 	"<br><br>"],H1)%,writeln(H1)
@@ -187,8 +187,11 @@ get_num(A) :- num1(A),retractall(num1(_)),A1 is A+1,assertz(num1(A1)).
 																												        
 																												        %%term_to_atom(Term,Data),
 		%append(Data1,[submit=_],Data),
-		findall(_,(member(HH=O,Data),(O=on->(atomic_list_concat(B,"+",HH),%atomic_list_concat(B,"\\ ",HH1),
-		atomic_list_concat(B," ",HH1),atom_string(HH1,HH2),foldr(string_concat,[HH1," was committed.<br>"],A),writeln(A),commit(HH2));writeln([HH,not,committed]))),_),																										        
+
+		findall(_,(member(HHa=O,Data),atom_concat(HH,'xxA',HHa),atom_concat(HH,'xxB',HH1a),(O=on->(member(HH1a=Label,Data),
+		atomic_list_concat(B,"+",HH),%atomic_list_concat(B,"\\ ",HH1),
+		atomic_list_concat(B," ",HH1),atom_string(HH1,HH2),
+		(commit(HH2,Label)->(foldr(string_concat,[HH1," (with label: \"",Label,"\") was committed.<br>"],A),writeln(A));writeln([HH,not,committed]))))),_),																										        
 %Data=[%%debug='off',%%Debug1,
 %query=Query1,functions=Functions1,submit=_],
 
