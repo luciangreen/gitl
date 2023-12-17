@@ -57,13 +57,15 @@ gitl_server(8000).
 
 * Go to `http://localhost:8000/gitl`.
 
+* Remember to edit the password in `../Philosophy/web-editor-pw.pl` before running.
+
 * To view and change repositories, load with:
 ```
 ['web_editor_gitl_test.pl'].
-server(8000).
+web_editor_server(8000).
 ```
 
-* Go to `http://localhost:8000`.
+* Go to `http://localhost:8000/we`.
 
 # Authors
 
