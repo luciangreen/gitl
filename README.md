@@ -57,6 +57,14 @@ gitl_server(8000).
 
 * Go to `http://localhost:8000/gitl`.
 
+* To view and change repositories, load with:
+```
+['web_editor_gitl_test.pl'].
+server(8000).
+```
+
+* Go to `http://localhost:8000`.
+
 # Authors
 
 Lucian Green - Initial programmer - <a href="https://www.lucianacademy.com/">Lucian Academy</a>
