@@ -46,7 +46,7 @@ halt
 * In the folder `gitl_test` at the same level as `gitl`, store your repositories, e.g. `b`.
 * In the folder `gitl_data` at the same level as `gitl`, GitL stores the version control system and diffs between versions.
 
-* `commit("b").` - Commits repository `b` to the version control system and creates an HTML file with the differences between versions.
+* `commit("b","Description of changes.").` - Commits repository `b` to the version control system and creates an HTML file with the differences between versions with the description of changes.
 
 # GitL Web Service
 
