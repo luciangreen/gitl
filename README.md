@@ -65,7 +65,7 @@ gitl_server(8000).
 web_editor_server(8000).
 ```
 
-* Go to `http://localhost:8000/we`.
+* Go to `http://localhost:8000/webeditor`.
 
 # Authors
 
