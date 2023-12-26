@@ -183,15 +183,16 @@ get_num(A) :- num1(A),retractall(num1(_)),A1 is A+1,assertz(num1(A1)).
 																									              http_read_data(Request, Data, []),
 																										              format('Content-type: text/html~n~n', []),
 																											      	format('<p>', []),
-																												        %%portray_clause(Data),
+																												        %portray_clause(Data),
 																												        
-																												        %%term_to_atom(Term,Data),
+
+%a(Data) :-																						        %%term_to_atom(Term,Data),
 		%append(Data1,[submit=_],Data),
 
 		findall(_,(member(HHa=O,Data),atom_concat(HH,'xxA',HHa),atom_concat(HH,'xxB',HH1a),(O=on->(member(HH1a=Label,Data),
 		atomic_list_concat(B,"+",HH),%atomic_list_concat(B,"\\ ",HH1),
-		atomic_list_concat(B," ",HH1),atom_string(HH1,HH2),
-		(commit(HH2,Label)->(foldr(string_concat,[HH1," (with label: \"",Label,"\") was committed.<br>"],A),writeln(A));writeln([HH,not,committed]))))),_),																										        
+		atomic_list_concat(B," ",HH1),atom_string(HH1,HH2),atom_string(Label,Label1),
+		(commit(HH2,Label1)->(foldr(string_concat,[HH1," (with label: \"",Label1,"\") was committed.<br>"],A),writeln(A));writeln([HH,not,committed]))))),_),																										        
 %Data=[%%debug='off',%%Debug1,
 %query=Query1,functions=Functions1,submit=_],
 
@@ -205,4 +206,6 @@ get_num(A) :- num1(A),retractall(num1(_)),A1 is A+1,assertz(num1(A1)).
 																															%portray_clause(Result),
 																																																															%%writeln1(Data),
 
-format('</p>').
+format('</p>')
+%*/
+.
