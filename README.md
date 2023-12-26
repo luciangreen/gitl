@@ -67,6 +67,11 @@ web_editor_server(8000).
 
 * Go to `http://localhost:8000/webeditor`.
 
+# Integrate with Lucian CI/CD
+
+* So far, to commit changes from Lucian CI/CD, run:
+`scp -pr ../../GitHub2/ ../gitl_test/` (you may need to delete `tmp.pl` in `gitl_test`) before committing.
+
 # Authors
 
 Lucian Green - Initial programmer - <a href="https://www.lucianacademy.com/">Lucian Academy</a>
