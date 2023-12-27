@@ -69,7 +69,7 @@ web_editor_server(8000).
 
 # Integrate with Lucian CI/CD
 
-* So far, to commit changes from Lucian CI/CD, run:
+* So far, to commit changes from <a href="https://github.com/luciangreen/luciancicd">Lucian CI/CD</a>, run:
 `scp -pr ../../GitHub2/ ../gitl_test/` before committing.
 
 # Authors
