@@ -19,7 +19,7 @@ Please read the following instructions on how to install the project on your com
 
 # 2. Or Install from List Prolog Package Manager (LPPM)
 
-* Download <a href="https://github.com/luciangreen/gitl">GitL</a>:
+* Download the <a href="https://github.com/luciangreen/List-Prolog-Package-Manager">LPPM Repository</a>:
 
 ```
 git clone https://github.com/luciangreen/List-Prolog-Package-Manager.git
