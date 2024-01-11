@@ -7,6 +7,7 @@
 :-include('diff.pl').
 :-include('find_files.pl').
 :-include('../luciancicd/ci_vintage.pl').
+:-include('../luciancicd/diff-cgpt.pl').
 :-include('gitl_ws.pl').
 :-include('gitl_ws1.pl').
 :-include('../listprologinterpreter/listprolog.pl').
@@ -175,7 +176,9 @@ sd1(RTests,R1,To_m_1,Repository_root_path,Repository,Gitl_data_path1,N1,R1,N_pat
   
    
 diff(Before,After,After3) :-
- find_insertions_and_deletions_vintage_old(Before,After,Insertions,Deletions),
- replace11_vintage(After,Insertions,[],[],After2),
- replace12_vintage(Before,After2,Deletions,[],After3)
- ,!.
+ %find_insertions_and_deletions_vintage_old(Before,After,Insertions,Deletions),
+ diff(Before,After,_,_,[],[],After3),
+
+ %replace11_vintage(After,Insertions,[],[],After2),
+ %replace12_vintage(Before,After2,Deletions,[],After3),
+ !.
