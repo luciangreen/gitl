@@ -53,7 +53,7 @@ ws_html(Repository1,HTML1) :-
 
  find_files(R1,RTests),
 
- findall([T1a,BA],(member([T1,BA],RTests),string_concat(R1,T1a,T1)),R110),
+ findall([T1a,BA1],(member([T1,BA],RTests),remove_end_comments2(BA,BA1),string_concat(R1,T1a,T1)),R110),
 
 
  To=R1,
@@ -70,7 +70,7 @@ sd2(R110,Tests1,RTests,R1,To_m_1,_Repository_root_path,_Repository,_Gitl_data_pa
  
  %findall(T1a,(member([T1,_],RTests),string_concat(R1,T1a,T1)),R11),
  findall(T1a,(member([T1,_],Tests1),string_concat(To_m_1,T1a,T1)),T11),
- findall([T1a,BA],(member([T1,BA],Tests1),string_concat(To_m_1,T1a,T1)),T110),
+ findall([T1a,BA1],(member([T1,BA],Tests1),remove_end_comments2(BA,BA1),string_concat(To_m_1,T1a,T1)),T110),
 
  %trace,
 

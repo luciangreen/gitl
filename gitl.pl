@@ -11,6 +11,7 @@
 :-include('gitl_ws.pl').
 :-include('gitl_ws1.pl').
 :-include('../listprologinterpreter/listprolog.pl').
+:-include('../luciancicd/remove_end_comment.pl').
 
 repository_root_path("../gitl_test/").
 gitl_data_path("../gitl_data/").
