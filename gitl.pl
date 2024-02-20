@@ -158,7 +158,7 @@ sd1(RTests,R1,To_m_1,Repository_root_path,Repository,Gitl_data_path1,N1,R1,N_pat
  split_string(B1,"\n\r","\n\r",IT111),
  split_string(B2,"\n\r","\n\r",IT121),
  %trace,
- diff(IT111,IT121,C)),CA),
+ diff_gitl(IT111,IT121,C)),CA),
  %trace,
  
  findall([*,A,[[i,B14]]],(member(A,I),%string_concat(To_m_1,A,A1),
@@ -172,10 +172,10 @@ sd1(RTests,R1,To_m_1,Repository_root_path,Repository,Gitl_data_path1,N1,R1,N_pat
  
  foldr(append,[IT11a,IT123a,CA],C1),
  
- diff(C1,HTML).
+ diff_gitl(C1,HTML).
   
    
-diff(Before,After,After3) :-
+diff_gitl(Before,After,After3) :-
  %find_insertions_and_deletions_vintage_old(Before,After,Insertions,Deletions),
  diff(Before,After,_,_,[],[],After3),
 

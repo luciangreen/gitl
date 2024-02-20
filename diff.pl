@@ -1,8 +1,8 @@
-diff(After3,HTML3) :-
-diff1(After3,HTML2),
+diff_gitl(After3,HTML3) :-
+diff1_gitl(After3,HTML2),
 	string_concat("<b>Diff output</b><br><b>Key</b><table bgcolor=\"green\"><tr><td>Insertion</td></tr></table><br><table bgcolor=\"red\"><tr><td>Deletion</td></tr></table><br>",HTML2,HTML3).
 
-diff1(After3,HTML3) :-
+diff1_gitl(After3,HTML3) :-
  %correspondences(Corr),
  
  findall(HTML_a,(member(Item%[[n,comment],[Item]]
@@ -10,7 +10,7 @@ diff1(After3,HTML3) :-
 
  (Item=[*, Name, Item_a] ->
  
- diff2(Name,Item_a,HTML_a);
+ diff2_gitl(Name,Item_a,HTML_a);
 
 
 
@@ -53,7 +53,7 @@ diff1(After3,HTML3) :-
  foldr(string_concat,HTML1,HTML3).
  
  
- diff2(Name,After3,HTML3) :-
+ diff2_gitl(Name,After3,HTML3) :-
  %correspondences(Corr),
  
  findall(["<table bgcolor=\"",Colour,"\"><tr><td>",Change,Item2,"</td></tr></table>"],(member(Item%[[n,comment],[Item]]

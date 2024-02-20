@@ -71,6 +71,9 @@ sd2(R110,Tests1,RTests,R1,To_m_1,_Repository_root_path,_Repository,_Gitl_data_pa
  %findall(T1a,(member([T1,_],RTests),string_concat(R1,T1a,T1)),R11),
  findall(T1a,(member([T1,_],Tests1),string_concat(To_m_1,T1a,T1)),T11),
  findall([T1a,BA],(member([T1,BA],Tests1),string_concat(To_m_1,T1a,T1)),T110),
+
+ %trace,
+
  not(T110=R110),
  
 
@@ -102,7 +105,7 @@ sd2(R110,Tests1,RTests,R1,To_m_1,_Repository_root_path,_Repository,_Gitl_data_pa
  split_string(B1,"\n\r","\n\r",IT111),
  split_string(B2,"\n\r","\n\r",IT121),
  %trace,
- diff(IT111,IT121,C)),CA),
+ diff_gitl(IT111,IT121,C)),CA),
  %trace,
  
  findall([*,A,[[i,B14]]],(member(A,I),%string_concat(To_m_1,A,A1),
@@ -116,6 +119,6 @@ sd2(R110,Tests1,RTests,R1,To_m_1,_Repository_root_path,_Repository,_Gitl_data_pa
  
  foldr(append,[IT11a,IT123a,CA],C1),
  
- diff(C1,HTML).
+ diff_gitl(C1,HTML).
   
    
