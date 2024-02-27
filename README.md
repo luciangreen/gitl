@@ -50,6 +50,8 @@ halt
 
 * `commit("b","Description of changes.").` - Commits repository `b` to the version control system and creates an HTML file with the differences between versions and the description of changes.
 
+* <a href="https://dev.to/luciangreen/introducing-gitl-a-decentralised-git-server-1a34">Dev.to article about GitL</a>
+
 # GitL Web Service
 
 * To see a list of repositories with changes and commit some of the changed ones, load with:
