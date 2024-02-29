@@ -93,7 +93,7 @@ diff1_gitl(After3,HTML3) :-
  flatten(HTML,HTML1),
  foldr(string_concat,HTML1,HTML2),
  
- 	foldr(string_concat,["<b>File name: ",Name,"<br>",HTML2],HTML3).
+ 	foldr(string_concat,["<b>File name: ",Name,"</b><br>",HTML2],HTML3).
  %term_to_atom(HTML1,HTML2),
 
  	%time1(Time),
