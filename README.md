@@ -1,10 +1,10 @@
 # GitL
 
-* GitL is a decentralised Git that lets you commit and view diffs of version control system in your local folder.
+* GitL is a decentralised Git that lets you commit and view diffs of the version control system in your local folder.
 
 # Getting Started
 
-Please read the following instructions on how to install the project on your computer for controlling versions.
+Please read the following instructions on installing the project on your computer for controlling versions.
 
 # Prerequisites
 
