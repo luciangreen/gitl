@@ -29,7 +29,8 @@ cd List-Prolog-Package-Manager
 swipl
 ['lppm'].
 lppm_install("luciangreen","gitl").
-halt
+../
+halt.
 ```
 
 # Running
