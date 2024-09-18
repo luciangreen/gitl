@@ -11,7 +11,7 @@
 %:-include('../SSI/ssi.pl').
 %:-include('gitl1_pl.pl').
 
-%:- include('files/listprolog.pl').
+%:-include('files/listprolog.pl').
 
 % show changes to all repos on page, allow selecting checkboxes of repos to commit or all 
 % have anchor, link to top
