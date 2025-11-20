@@ -18,15 +18,18 @@ DROPBOX="${HOME}/Dropbox"
 
 GITL_TEST_DIR="${DROPBOX}/GitHub/gitl_test/${REP_NAME}"
 GITHUB2_DIR="${DROPBOX}/GitHub2/${REP_NAME}"
+GITHUB2O_DIR="${DROPBOX}/GitHub2o/${REP_NAME}"
+
 LUCIANCICD_DIR="${DROPBOX}/GitHub/luciancicd/"
 LUCIANCICD_PL="luciancicd.pl"
 GITL_PL="${DROPBOX}/GitHub/gitl/gitl.pl"
 
-MAIN_FILE="${GITL_TEST_DIR}/main_file.txt"
-
+# ..gitl_data/<rep_name>/n.txt → we'll interpret as:
 GITL_DATA_BASE="${DROPBOX}/GitHub/gitl_data"
 GITL_DATA_REPO_DIR="${GITL_DATA_BASE}/${REP_NAME}"
 N_FILE="${GITL_DATA_REPO_DIR}/n.txt"
+
+MAIN_FILE="${GITL_TEST_DIR}/main_file.txt"
 
 echo "=== Step 0: Ensure main_file.txt exists and is correct ==="
 if [ ! -f "${MAIN_FILE}" ]; then
@@ -51,12 +54,11 @@ else
   sleep 2
 fi
 
+echo
 echo "=== Step 1: Copy gitl_test repo → GitHub2 working copy ==="
 
 mkdir -p "${GITHUB2_DIR}"
-# Clear existing contents of GitHub2 working dir (but not the dir itself)
 rm -rf "${GITHUB2_DIR:?}/"*
-# Copy everything from gitl_test to GitHub2
 cp -a "${GITL_TEST_DIR}/." "${GITHUB2_DIR}/"
 
 echo "Copied contents from:"
@@ -65,15 +67,10 @@ echo "  ${GITL_TEST_DIR} → ${GITHUB2_DIR}"
 echo
 echo "=== Step 2: Update LPPM registry with repository dependencies (placeholder) ==="
 echo ">> TODO: Insert your actual LPPM registry update command here."
-echo "For example, you might call a Prolog script such as:"
+echo "For example:"
 echo "  swipl -q -s path/to/lppm_registry.pl -g \"update_lppm_registry('${REP_NAME}')\" -t halt"
-echo "Currently this step is a NO-OP."
+echo "(Currently this step does nothing.)"
 echo
-
-# Example (commented out) if you have such a script:
-# swipl -q -s "${DROPBOX}/GitHub/lppm_registry/lppm_registry.pl" \
-#      -g "update_lppm_registry('${REP_NAME}')" \
-#      -t halt
 
 LUCIANCICD_PATH="${LUCIANCICD_DIR}""${LUCIANCICD_PL}"
 echo "=== Step 3: Run Lucian CI/CD ==="
@@ -89,17 +86,25 @@ swipl -q -s "${LUCIANCICD_PL}" -g luciancicd -t halt
 echo "Lucian CI/CD run completed."
 
 echo
-echo "=== Step 4: Replace gitl_test contents with updated GitHub2 contents ==="
-# Remove all contents in gitl_test repo
+echo "=== Step 4: Replace gitl_test contents with changed code from GitHub2o ==="
+
+if [ ! -d "${GITHUB2O_DIR}" ]; then
+  echo "ERROR: Changed-code directory not found:"
+  echo "  ${GITHUB2O_DIR}"
+  echo "luciancicd probably did not populate GitHub2o as expected."
+  exit 1
+fi
+
+# Clear gitl_test and copy from GitHub2o
 rm -rf "${GITL_TEST_DIR:?}/"*
-# Copy back from GitHub2 to gitl_test
-cp -a "${GITHUB2_DIR}/." "${GITL_TEST_DIR}/"
+cp -a "${GITHUB2O_DIR}/." "${GITL_TEST_DIR}/"
 
 echo "Updated gitl_test contents from:"
-echo "  ${GITHUB2_DIR} → ${GITL_TEST_DIR}"
+echo "  ${GITHUB2O_DIR} → ${GITL_TEST_DIR}"
 
 echo
-echo "=== Step 4.5: Check gitl_data baseline before committing ==="
+echo "=== Step 4.5: Check gitl_data baseline vs finished GitHub2o code ==="
+echo "Rule: only commit if ..gitl_data/<rep_name>/<n>/* differs from GitHub2o/<rep_name>/*."
 
 if [ ! -f "${N_FILE}" ]; then
   echo "WARNING: n.txt not found at ${N_FILE}"
@@ -123,17 +128,17 @@ if [ ! -d "${BASELINE_DIR}" ]; then
   exit 0
 fi
 
-echo "Baseline version: n = ${N_VALUE}"
+echo "Baseline version n = ${N_VALUE}"
 echo "Baseline dir: ${BASELINE_DIR}"
-echo "New code dir: ${GITHUB2_DIR}"
+echo "Finished (changed) code dir: ${GITHUB2O_DIR}"
 
-# Compare baseline vs finished code
-if diff -qr "${BASELINE_DIR}" "${GITHUB2_DIR}" >/dev/null 2>&1; then
-  echo "No differences between baseline (${BASELINE_DIR}) and finished code (${GITHUB2_DIR})."
+# Compare baseline vs *changed* code in GitHub2o
+if diff -qr "${BASELINE_DIR}" "${GITHUB2O_DIR}" >/dev/null 2>&1; then
+  echo "No differences between baseline (${BASELINE_DIR}) and changed code (${GITHUB2O_DIR})."
   echo "Skipping gitl commit because code is effectively the same as baseline."
   exit 0
 else
-  echo "Differences detected between baseline and finished code."
+  echo "Differences detected between baseline and changed code."
   echo "Proceeding to gitl commit."
 fi
 

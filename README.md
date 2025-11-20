@@ -112,8 +112,8 @@ web_editor_server(8000).
 
 # Integrate with Lucian CI/CD
 
-* So far, to commit changes from <a href="https://github.com/luciangreen/luciancicd">Lucian CI/CD</a>, run:
-`scp -pr ../../GitHub2o/ ../gitl_test/` in the `gitl` folder before committing.
+* Prepare the script to run luciancicd and commit `chmod +x ./run_luciancicd_for_repo.sh`
+* Run this script: `./run_luciancicd_for_repo.sh my_repo_name "Description of changes."`
 
 # Authors
 
