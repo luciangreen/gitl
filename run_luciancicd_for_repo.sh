@@ -31,6 +31,29 @@ N_FILE="${GITL_DATA_REPO_DIR}/n.txt"
 
 MAIN_FILE="${GITL_TEST_DIR}/main_file.txt"
 
+echo "==================================================================="
+echo " Lucian CI/CD + GitL notes"
+echo "==================================================================="
+echo "1. If Lucian CI/CD could create two versions of a repository because"
+echo "   it has two or more first predicates, then a NEW first predicate"
+echo "   should be written that can call either of them (a dispatcher)."
+echo
+echo "2. People should write the DATE in the commit description, e.g.:"
+echo "      \"2025-11-22 – Fixed parser and updated docs.\""
+echo
+echo "3. When multiple repositories are connected, treat them as a SINGLE"
+echo "   logical repository by using a single calling predicate that calls"
+echo "   into the connected repos in a controlled way."
+echo
+echo "4. This version of Lucian CI/CD naively assumes the user controls ALL"
+echo "   repositories that their repository uses. Otherwise, any external"
+echo "   repo-like folders should be EXCLUDED from being saved (e.g. not"
+echo "   copied to gitl_data). In that case, the user would download these"
+echo "   imported folders locally but not necessarily change them."
+echo "===========================================
+========================"
+echo
+
 echo "=== Step 0: Ensure main_file.txt exists and is correct ==="
 if [ ! -f "${MAIN_FILE}" ]; then
   cat <<EOF
