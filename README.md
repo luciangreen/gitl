@@ -121,9 +121,11 @@ web_editor_server(8000).
 
 * GitL is a proper version control system that can store backups on a Virtual Private Server (VPS), allowing recovery in case of data loss and retrieval of previous versions. It assumes you have set up the VPS and the corresponding folders; then you can run the following script to save and retrieve backups from GitL.
 
-* `swipl -q -s "sync_gitl_data_to_vps.pl" -g "sync_gitl_data_to_vps(\"rep_name\",\"user\",\"x.x.x.x\")" -t halt`
+* Prepare the script to run luciancicd and commit `chmod +x ./sync_gitl_data_to_vps.sh`
+* Run this script: `./sync_gitl_data_to_vps.sh my_repo_name user_name x.x.x.x`
 
-* `swipl -q -s "restore_gitl_data_from_vps_if_newer.pl" -g "restore_gitl_data_from_vps_if_newer(\"rep_name\",\"user\",\"x.x.x.x\")" -t halt`
+* Prepare the script to run luciancicd and commit `chmod +x ./restore_gitl_data_from_vps_if_newer.sh`
+* Run this script: `./restore_gitl_data_from_vps_if_newer.sh my_repo_name user_name x.x.x.x`
 
 # Authors
 
