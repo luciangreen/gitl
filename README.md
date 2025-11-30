@@ -114,18 +114,18 @@ web_editor_server(8000).
 
 * GitL is a version control system that saves each version of an algorithm repository so you can revert to a previous working version if needed. Before saving a backup version, run Lucian CI/CD to verify and make necessary modifications (see <a href="https://github.com/luciangreen/luciancicd">Lucian CI/CD</a>), or run the following script, and then commit a version to GitL with it.
 
-* Prepare the script to run luciancicd and commit `chmod +x ./run_luciancicd_for_repo.sh`
-* Run this script: `./run_luciancicd_for_repo.sh my_repo_name "Description of changes."`
+* Prepare the script to run luciancicd and commit `chmod +x ./luciancicd.sh`
+* Run this script: `./luciancicd.sh my_repo_name "Description of changes."`
 
 # Synchronise GitL with a Virtual Private Server (VPS)
 
 * GitL is a proper version control system that can store backups on a Virtual Private Server (VPS), allowing recovery in case of data loss and retrieval of previous versions. It assumes you have set up the VPS and the corresponding folders; then you can run the following script to save and retrieve backups from GitL.
 
-* Prepare the script to run luciancicd and commit `chmod +x ./sync_gitl_data_to_vps.sh`
-* Run this script: `./sync_gitl_data_to_vps.sh my_repo_name user_name x.x.x.x`
+* Prepare the script to run luciancicd and commit `chmod +x ./sync.sh`
+* Run this script: `./sync.sh my_repo_name user_name x.x.x.x`
 
-* Prepare the script to run luciancicd and commit `chmod +x ./restore_gitl_data_from_vps_if_newer.sh`
-* Run this script: `./restore_gitl_data_from_vps_if_newer.sh my_repo_name user_name x.x.x.x`
+* Prepare the script to run luciancicd and commit `chmod +x ./restore.sh`
+* Run this script: `./restore.sh my_repo_name user_name x.x.x.x`
 
 # Authors
 
