@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# chmod +x ./run_luciancicd_for_repo.sh
-# ./run_luciancicd_for_repo.sh my_repo_name "Description of changes."
+# chmod +x ./luciancicd.sh
+# ./luciancicd.sh my_repo_name "Description of changes."
 
 set -euo pipefail
 
